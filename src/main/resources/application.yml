@@ -1,0 +1,47 @@
+api:
+  version: 1.0.0
+  title: Delivery API
+  basePackage: com.jcgfdev.deliveryapi
+  description: Automated JSON API documentation for API's build with Spring
+  terms: https://
+
+server:
+  servlet:
+    context-path: /delivery-api
+  port: 1406
+  error:
+    include-message: always
+    include-binding-errors: always
+# swagger-ui custom path
+springdoc:
+  api-docs:
+    path: /api-docs
+
+spring:
+  jpa:
+    hibernate.ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/deliverydb
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    host: smtp.mi.com.co
+    port: 587
+    username: support@jcgfdev.com
+    password: JcgfDev1!
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  secret: JcGfDeV!.
+  expiration: 3600000
