@@ -109,7 +109,7 @@ public class UserService implements IUserService {
             confirmationUser.setExpiresAt(LocalDateTime.now().plusMinutes(15));
             confirmationUser.setUser(user);
             confirmationTokenService.saveConfirmationToken(confirmationUser);
-            ConfirmationPath confirmationPath = confirmationPathService.findById(Long.parseLong("1"));
+            ConfirmationPath confirmationPath = confirmationPathService.findById(1);
             String link = confirmationPath.getPath() + token;
             emailService.send(userRequest.getEmail(), buildEmailService.buildEmail(userRequest.getFirstName(), link));
             return user;
