@@ -13,8 +13,8 @@ public class ConfirmationPathService implements IConfirmationPathService {
     private ConfirmationPathRepository confirmationPathRepository;
 
     @Override
-    public ConfirmationPath findById(Long id) {
+    public ConfirmationPath findById(Integer id) {
         return confirmationPathRepository.findById(id)
-                .orElseThrow(()-> new IllegalStateException("confirmationPath"));
+                .orElseThrow(()-> new IllegalStateException("don't found: confirmationPath don't exist"));
     }
 }
