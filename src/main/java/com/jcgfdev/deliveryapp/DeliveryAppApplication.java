@@ -10,6 +10,7 @@ public class DeliveryAppApplication {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(DeliveryAppApplication.class);
+        app.run(args);
     }
 
     @Bean
