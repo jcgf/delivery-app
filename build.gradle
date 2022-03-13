@@ -4,8 +4,13 @@ plugins {
     id 'java'
 }
 
-springBoot {
-    mainClass = 'com.jcgfdev.deliveryapp.DeliveryAppApplication'
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.jcgfdev.deliveryapp.DeliveryAppApplication'
+        )
+    }
 }
 
 group = 'com.jcgfdev'
