@@ -7,7 +7,7 @@ plugins {
 jar {
 	manifest {
 		attributes(
-				'Main-Class': 'com.jcgfdev.deliveryapp'
+				'Main-Class': 'main.java.com.jcgfdev.deliveryapp.DeliveryAppApplication'
 		)
 	}
 }
