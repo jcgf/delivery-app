@@ -2,7 +2,7 @@
 Delivery API para deliveryapp
 
 # Guia de instalacion
-Guia de instalacion de servicio Rest de deliveryapp. Es necesario tener encuenta que esta aplicacion es totalmente para pruebas por lo cual las configuraciones y la guia aqui dada es para una instalacion local en cualquier equipo o servidor. se dejara un despliegue montado enlinea.
+Guia de instalacion de servicio Rest de deliveryapp. Es necesario tener encuenta que esta aplicacion es totalmente para pruebas por lo cual las configuraciones y la guia aqui dada es para una instalacion local en cualquier equipo o servidor. se dejara un despliegue montado en linea en el siguiente [enlace](https://se-jc-delivery-app.herokuapp.com/delivery-api/swagger-ui/index.html) se encontrara la documentacion de la API.
 
 ## 1. Instalacion de docker
 ir al sitio web de [descarga](https://www.docker.com/get-started) y seguir los pasos para instalar docker
