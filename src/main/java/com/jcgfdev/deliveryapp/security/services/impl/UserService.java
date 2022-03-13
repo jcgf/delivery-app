@@ -1,6 +1,7 @@
 package com.jcgfdev.deliveryapp.security.services.impl;
 
 import com.jcgfdev.deliveryapp.security.configs.JwtUtils;
+import com.jcgfdev.deliveryapp.security.entities.ConfirmationPath;
 import com.jcgfdev.deliveryapp.security.entities.ConfirmationUser;
 import com.jcgfdev.deliveryapp.security.entities.Role;
 import com.jcgfdev.deliveryapp.security.entities.User;
@@ -12,6 +13,7 @@ import com.jcgfdev.deliveryapp.security.payloads.responses.UserLoginResponse;
 import com.jcgfdev.deliveryapp.security.repositories.RoleRepository;
 import com.jcgfdev.deliveryapp.security.repositories.UserRepository;
 import com.jcgfdev.deliveryapp.security.roles.Roles;
+import com.jcgfdev.deliveryapp.security.services.IConfirmationPathService;
 import com.jcgfdev.deliveryapp.security.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,6 +49,8 @@ public class UserService implements IUserService {
     private EmailService emailService;
     @Autowired
     private BuildEmailService buildEmailService;
+    @Autowired
+    private IConfirmationPathService confirmationPathService;
 
     @Override
     public UserLoginResponse loginUser(LoginRequest loginRequest) {
@@ -58,18 +62,15 @@ public class UserService implements IUserService {
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
-        User user = userRepository.findByEmail(loginRequest.getEmail()).get();
         UserLoginResponse userLoginResponse = new UserLoginResponse();
         userLoginResponse.setToken(jwt);
         userLoginResponse.setEmail(userDetails.getEmail());
         userLoginResponse.setRoles(roles);
-        ;
         return userLoginResponse;
     }
 
     @Override
     public User saveUser(UserRequest userRequest) {
-        MessageResponse messageResponse = new MessageResponse();
         if (userRepository.existsByEmail(userRequest.getEmail())) {
             throw new IllegalStateException("Error: Email is already in use!");
         } else {
@@ -108,7 +109,8 @@ public class UserService implements IUserService {
             confirmationUser.setExpiresAt(LocalDateTime.now().plusMinutes(15));
             confirmationUser.setUser(user);
             confirmationTokenService.saveConfirmationToken(confirmationUser);
-            String link = "http://localhost:1406/delivery-api/auth/confirmToken?token=" + token;
+            ConfirmationPath confirmationPath = confirmationPathService.findById(Long.parseLong("1"));
+            String link = confirmationPath.getPath() + token;
             emailService.send(userRequest.getEmail(), buildEmailService.buildEmail(userRequest.getFirstName(), link));
             return user;
         }
