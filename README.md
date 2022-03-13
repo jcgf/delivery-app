@@ -54,7 +54,7 @@ CREATE DATABASE deliverydb;
 es necesario tener [Gradle](https://gradle.org/install/) instalado desde la version [7.4](https://services.gradle.org/distributions/gradle-7.4-all.zip)
 
 ## 6. Ejecutar API
-Ejecutar el siguiente comando en la consola:
+Ejecutar el siguiente comando en la consola estando en la raiz principal de la aplicacion:
 ```bash
 gradle bootRun
 ```
