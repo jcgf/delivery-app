@@ -19,9 +19,10 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Autowired
     private ProductTypeRepository productTypeRepository;
 
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
+    private final ModelMapper modelMapper;
+
+    public ProductTypeServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         return productTypeRepository.findAll()
                 .stream()
                 .map(productType ->
-                        modelMapper()
+                        modelMapper
                                 .map(productType, ProductTypeDTO.class))
                 .collect(Collectors.toList());
     }
@@ -38,7 +39,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductTypeDTO findById(Long id) {
         Optional<ProductType> optionalProductType = productTypeRepository.findById(id);
         return optionalProductType
-                .map(productType -> modelMapper()
+                .map(productType -> modelMapper
                         .map(productType, ProductTypeDTO.class))
                 .orElseThrow(() -> new IllegalStateException("Not found: productType is not found."));
     }
@@ -47,6 +48,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductTypeDTO save(ProductTypeRequest productTypeRequest) {
         ProductType productType = new ProductType();
         productType.setDetails(productTypeRequest.getDetails());
-        return modelMapper().map(productTypeRepository.save(productType), ProductTypeDTO.class);
+        return modelMapper.map(productTypeRepository.save(productType), ProductTypeDTO.class);
     }
 }
