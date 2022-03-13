@@ -29,7 +29,7 @@ public class EmailService implements IEmailService {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirm your email");
-            helper.setFrom("soporte@judicialapp.com.co");
+            helper.setFrom("support@jcgfdev.com");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             LOGGER.error("failed to send email", e);

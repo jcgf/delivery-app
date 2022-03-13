@@ -31,7 +31,7 @@ public class BuildEmailService implements IBuildEmailService {
                 "            color: #0000008a;\n" +
                 "            font-size: 36px;\n" +
                 "            font-weight: bold;\n" +
-                "            line-height: normal;\">Bienvenido a <strong style=\"color: #3e1314;\">DeliveryAPP</strong></h1>\n" +
+                "            line-height: normal;\">Bienvenido a <strong style=\"color: #FF5733;\">DeliveryAPP</strong></h1>\n" +
                 "            <div style=\"padding: 20px 0px; font-size: 18px; text-align: justify;\">\n" +
                 "                <div>\n" +
                 "                    Gracias por ingresar a DeliveryApp de clic en el siguiente boton para activar su cuenta.\n" +
@@ -39,7 +39,7 @@ public class BuildEmailService implements IBuildEmailService {
                 "            </div>\n" +
                 "            <div style=\"padding-top: 40px; text-align: center;\">\n" +
                 "                <a href=\"" + link + "\" target=\"_blank\" style=\"\n" +
-                "                color: #3e1314;\n" +
+                "                color: #FF5733;\n" +
                 "                font-weight: bold;\n" +
                 "                font-size: 18px;\n" +
                 "                text-decoration: none; \n" +
