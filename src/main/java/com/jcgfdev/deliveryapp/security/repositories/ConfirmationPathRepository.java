@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ConfirmationPathRepository extends JpaRepository<ConfirmationPath, Long> {
-    Optional<ConfirmationPath> findById(Long id);
+public interface ConfirmationPathRepository extends JpaRepository<ConfirmationPath, Integer> {
+    Optional<ConfirmationPath> findById(Integer id);
 }
