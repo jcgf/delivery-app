@@ -75,6 +75,8 @@ public class AuthController {
                     content = @Content)})
     @PutMapping("/confirmToken")
     public ResponseEntity<?> confirmToken(@RequestParam("token") String token) {
-        return responseDTOService.response(userService.confirmToken(token), HttpStatus.OK);
+        ResponseDTO<?> responseDTO;
+        responseDTO = new ResponseDTO<>(Constantes.NO_ERROR, userService.confirmToken(token));
+        return ResponseEntity.ok(responseDTO);
     }
 }
